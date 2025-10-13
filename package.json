@@ -1,0 +1,31 @@
+{
+  "name": "printique",
+  "version": "1.0.0",
+  "description": "A website for selling 3d printed home decors made from user's designs",
+  "keywords": [
+    "3D",
+    "printing",
+    "home",
+    "deco",
+    "AR"
+  ],
+  "homepage": "https://github.com/AestheticChallenger/Printique#readme",
+  "bugs": {
+    "url": "https://github.com/AestheticChallenger/Printique/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AestheticChallenger/Printique.git"
+  },
+  "license": "ISC",
+  "author": "A_H",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
