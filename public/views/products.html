@@ -1,68 +1,274 @@
+<!-- <!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid UI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .search-bar {
+        max-width: 400px;
+        margin: 20px auto;
+      }
+
+      .placeholder-box {
+        background-color: #ddd;
+        aspect-ratio: 1 / 1;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Product</a></li>
+      <li><a href="/">Customization</a></li>
+      <li><a href="/">About us</a></li>
+      <li><a href="/">Edit Products</a></li>
+      <li><a href="/">Error Page</a></li>
+        <li><a href="/">Profile</a></li>
+    </ul>
+    <div class="bg-white p-4 mt-5 rounded">
+      <!-- Search Bar --
+      <div class="search-bar input-group mb-4">
+        <input
+          type="text"
+          class="form-control rounded-start-pill"
+          placeholder="Search"
+        />
+        <span class="input-group-text rounded-end-pill"> 🔍 </span>
+      </div>
+
+      <!-- Grid --
+      <div class="row g-3" id="container-product">
+
+
+      </div>
+    </div>
+
+    <script>
+      const container = document.getElementById("container-product");
+      fetch("/products/getAllProducts")
+        .then((res) => {
+          console.log(res);
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+          data.forEach((product) => {
+            const productContainer = document.createElement("div");
+            productContainer.innerHTML = `
+            <div class="card h-50 ">
+              <img
+                src="https://cdn.homecrux.com/wp-content/uploads/2023/04/Loom-3D-Printed-Chair-by-Peter-Otto-Vosding_featured.jpg"
+                class="card-img-top"
+                alt="${product.images[0].alt}"
+              />
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${product.name}</h5>
+
+                <div class="mt-auto">
+                  <p class="card-text fw-bold">Minimum: €${product.price.toFixed(
+                    2
+                  )}</p>
+                </div>
+              </div>
+            </div>
+              `;
+            productContainer.className = "col-6 col-md-3 bg-black rounded";
+            container.appendChild(productContainer);
+          });
+        })
+        .catch((error) => console.log(error));
+    </script>
+  </body>
+</html>
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grid UI</title>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <style>
-    .search-bar {
-      max-width: 400px;
-      margin: 20px auto;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Catalogue | Printique</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        /* background-color: #f8f7f4; */
+        /* background-color: #cab5a8; */
+        background-color: #d1bfb3;
+        /* color: #222; */
+        color: #26211d;
+        font-family: "Poppins", sans-serif;
+      }
 
-    .placeholder-box {
-      background-color: #ddd;
-      aspect-ratio: 1 / 1;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body class="bg-dark text-dark">
-bb
-  <div class="container bg-white p-4 mt-5 rounded">
+      /* Navbar */
+      .navbar {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        color: #1a1a1a !important;
+      }
+
+      .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        margin-right: 15px;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover {
+        color: #a18867 !important; /* gold tone */
+      }
+
+      /* Search bar */
+      .search-bar {
+        max-width: 600px;
+        margin: 40px auto;
+      }
+
+      .search-bar input {
+        border-radius: 30px 0 0 30px;
+        border: 1px solid #ccc;
+        padding-left: 20px;
+      }
+
+      .search-bar span {
+        border-radius: 0 30px 30px 0;
+        background-color: #e0a65b;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* Product Grid */
+      .card {
+        border: none;
+        background-color: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        font-size: xx-large;
+      }
+
+      .card-img-top {
+        object-fit: cover;
+        height: 240px;
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .card-text {
+        color: #a18867;
+        font-weight: 500;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 40px 0;
+        font-size: 0.9rem;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3">
+      <div class="container">
+        <a class="navbar-brand" href="/">PRINTIQUE</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/products">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Customization</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Edit Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Error Page</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <!-- Search Bar -->
     <div class="search-bar input-group mb-4">
-      <input type="text" class="form-control rounded-start-pill" placeholder="Search" />
-      <span class="input-group-text rounded-end-pill">
-        🔍
-      </span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search luxury items..."
+      />
+      <span class="input-group-text">🔍</span>
     </div>
 
-    <!-- Grid -->
-    <div class="row g-3">
-      <!-- Repeat this 8 times -->
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
-      <div class="col-6 col-md-3">
-        <div class="placeholder-box w-100"></div>
-      </div>
+    <!-- Product Grid -->
+    <div class="container">
+      <div class="row g-4" id="container-product"></div>
     </div>
 
-  </div>
+    <!-- Footer -->
+    <div class="footer">© 2025 LUXORA. Crafted with elegance.</div>
 
-</body>
+    <script>
+      const container = document.getElementById("container-product");
+      fetch("/products/getAllProducts")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((product) => {
+            const productContainer = document.createElement("div");
+            productContainer.className = "col-6 col-md-4 col-lg-3";
+
+            productContainer.innerHTML = `
+              <div class="card h-100">
+                <img
+                  src="${
+                    product.images?.[0]?.url ||
+                    "https://cdn.homecrux.com/wp-content/uploads/2023/04/Loom-3D-Printed-Chair-by-Peter-Otto-Vosding_featured.jpg"
+                  }"
+                  class="card-img-top"
+                  alt="${product.images?.[0]?.alt || product.name}"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text mt-auto mb-0">
+                    Starting from €${product.price.toFixed(2)}
+                  </p>
+                </div>
+              </div>
+            `;
+            container.appendChild(productContainer);
+          });
+        })
+        .catch((error) => console.error(error));
+    </script>
+  </body>
 </html>
