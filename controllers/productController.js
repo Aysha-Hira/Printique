@@ -35,7 +35,7 @@ export const addProduct = async (req, res) => {
     )
       return res.status(400).json({
         msg: `fields are required: 
-      ${productData},`
+      ${productData},`,
       });
 
     const { name, price, images, inStock, isActive } = productData;
@@ -82,6 +82,14 @@ export const deleteProduct = async (req, res) => {
     res
       .status(201)
       .json({ message: "product '" + product.name + "' deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
+};
+
+export const customizeProduct = async (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "../public/views/customization.html"));
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
   }

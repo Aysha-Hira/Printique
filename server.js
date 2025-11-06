@@ -44,3 +44,4 @@ import homeRoute from "./routes/homeRoute.js";
 app.use("/", homeRoute);
 app.use("/user", userRoute);
 app.use("/products", productRoute);
+// app.use("/about-us", aboutUsRoute)
