@@ -53,13 +53,37 @@ export const getAProduct = async (req, res) => {
   }
 };
 
+export const getAProductPrice = async (req, res) => {
+  try {
+    const type = req.params.type;
+
+    if (!type || type.trim().length === 0) {
+      return res.status(400).json({ message: "Product type is required" });
+    }
+
+    const product = await Product.findOne({ type });
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    const price = Number((Math.random() * (product.max_price - product.min_price) + product.min_price).toFixed(2))
+    res.status(200).json(price)
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const addProduct = async (req, res) => {
   try {
     const productData = new Product(req.body);
     if (
       !productData ||
       !productData.name ||
-      !productData.price ||
+      !productData.min_price ||
+      !productData.max_price ||
       !productData.images ||
       !productData.inStock ||
       !productData.isActive
@@ -69,7 +93,7 @@ export const addProduct = async (req, res) => {
       ${productData},`,
       });
 
-    const { name, price, images, inStock, isActive } = productData;
+    const { name,min_price, max_price, images, inStock, isActive } = productData;
     const productExist = await Product.findOne({ name: name });
 
     if (productExist) {

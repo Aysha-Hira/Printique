@@ -49,8 +49,12 @@
       </div>
     </nav>
 
+    <!-- Response message -->
+    <div id="messageBox" class="message"></div>
+
     <!-- Customization Section -->
     <section class="customization-container">
+      <h1 style="text-align: center">Customize Your Product</h1>
       <div class="customization-content">
         <div class="product-preview">
           <img
@@ -61,13 +65,31 @@
         </div>
 
         <div class="customization-form">
-          <h2>Customize Your Product</h2>
-
           <form
             method="post"
             enctype="multipart/form-data"
-            action="/designs/save"
+            id="customizationForm"
           >
+            <!-- Title -->
+            <div class="row text-center">
+              <div
+                class="col-md-12 d-flex align-items-baseline justify-content-center gap-2"
+              >
+                <label for="title" class="form-label mb-0">Title:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="Title"
+                  name="title"
+                />
+              </div>
+            </div>
+
+            <input type="hidden" name="product_type" id="type" />
+            <!-- <input type="number" name="price" id="price" /> -->
+
+            <!-- LHW -->
             <div class="row text-center">
               <div
                 class="col-md-4 d-flex align-items-baseline justify-content-center gap-2"
@@ -120,7 +142,7 @@
               </label>
             </div>
 
-            <div class="color-inputs">
+            <!-- <div class="color-inputs">
               <div>
                 <label for="color" class="form-label">Primary Color</label>
                 <input
@@ -139,6 +161,30 @@
                   name="color_2"
                 />
               </div>
+            </div> -->
+
+            <div
+              class="color-preview-container"
+              style="display: flex; align-items: center; gap: 20px"
+            >
+              <div
+                class="color-inputs"
+                style="display: flex; flex-direction: column; gap: 10px"
+              >
+                <div>
+                  <label for="color" class="form-label">Primary Color</label>
+                  <input type="color" id="color" name="color_1" />
+                </div>
+                <div id="secondary-color">
+                  <label for="color2" class="form-label">Secondary Color</label>
+                  <input type="color" id="color2" name="color_2" />
+                </div>
+              </div>
+
+              <div
+                class="color-preview-box"
+                style="width: 100px; height: 100px; border: 1px solid #ccc"
+              ></div>
             </div>
 
             <label for="design" class="form-label mt-3">Upload Design</label>
@@ -154,8 +200,8 @@
               <button type="button" class="btn-custom" id="generate">
                 Generate
               </button>
-              <button type="button" class="btn-custom" id="add">
-                Add to Cart
+              <button type="button" class="btn-custom" id="save">
+                Save Design
               </button>
               <button type="reset" class="btn btn-outline-secondary">
                 Cancel
@@ -183,7 +229,10 @@
         <p class="brand">PRINTIQUE</p>
 
         <div class="social-links">
-          <a href="https://www.instagram.com/printique_uae?igsh=cnpmeXI1cDJkbnE1&utm_source=qr">Instagram</a>
+          <a
+            href="https://www.instagram.com/printique_uae?igsh=cnpmeXI1cDJkbnE1&utm_source=qr"
+            >Instagram</a
+          >
         </div>
 
         <p class="copy">© 2025 Printique. All rights reserved.</p>
@@ -191,46 +240,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      // Toggle second color input for gradient
-      const gradientToggle = document.getElementById("gradient-toggle");
-      const secondaryColor = document.getElementById("secondary-color");
-      const preview = document.querySelector(".product-preview");
-      const color1 = document.getElementById("color");
-      const color2 = document.getElementById("color2");
-
-      // Toggle secondary color input visibility
-      gradientToggle.addEventListener("change", () => {
-        if (gradientToggle.checked) {
-          secondaryColor.style.display = "block";
-          updatePreview();
-        } else {
-          secondaryColor.style.display = "none";
-          updatePreview();
-        }
-      });
-
-      // Update preview on color change
-      color1.addEventListener("input", updatePreview);
-      color2.addEventListener("input", updatePreview);
-
-      function updatePreview() {
-        if (gradientToggle.checked) {
-          // Use gradient background
-          preview.style.background = `linear-gradient(135deg, ${color1.value}, ${color2.value})`;
-        } else {
-          // Use solid color
-          preview.style.background = color1.value;
-        }
-      }
-
-      // Reset preview on cancel
-      const form = document.querySelector("form");
-      form.addEventListener("reset", () => {
-        setTimeout(() => {
-          preview.style.background = "#f4f4f4";
-        }, 100);
-      });
-    </script>
+    <script src="../scripts/customizationPage.js"></script>
   </body>
 </html>

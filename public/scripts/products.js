@@ -16,7 +16,7 @@ fetch("/products/getAllProducts")
           <div class="card-info">
             <h5 class="card-title">${product.name}</h5>
             <p class="card-description">${product.description}</p>
-            <p class="card-price">Starting from €${product.price.toFixed(2)}</p>
+            <p class="card-price">Starting from €${product.min_price.toFixed(2)}</p>
             <button class="select-btn" id="${product.name
               .replace(" ", '')
               .toLowerCase()}"

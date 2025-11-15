@@ -58,3 +58,16 @@ body {
 .login-footer a:hover {
   text-decoration: underline;
 }
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.message.error {
+  color: red;
+}
+.message.success {
+  color: green;
+}

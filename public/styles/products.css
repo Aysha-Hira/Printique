@@ -1,12 +1,10 @@
-
 /* body {
 
   background-color: #d1bfb3;
   /* background-image: radial-gradient(#ad5824 0.5px, 0.5px);
   background-size: 20px 20px; */
 
-
-  /* background-color: #d1bfb3; *
+/* background-color: #d1bfb3; *
   color: #26211d;
   font-family: "Forum", sans-serif;
 } */
@@ -21,13 +19,11 @@ body {
   font-family: "Forum", sans-serif;
 }
 
-
 /* body {
   background-color: #d1bfb3;
   background-image: radial-gradient(#b99e8b 0.6px, transparent 0.6px);
   background-size: 20px 20px;
 } */
-
 
 /* Navbar */
 .navbar {
@@ -131,7 +127,6 @@ body {
   transform: scale(1.02);
   justify-self: center;
 }
-
 
 /* Optional: slightly dim other cards during hover */
 #container-product:hover .card:not(:hover) {

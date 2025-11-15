@@ -32,7 +32,8 @@ body {
 
 /* About Page Styling */
 .about-section {
-  padding: 80px 200px;
+  width: 600px;
+  /* padding: 80px 200px; */
   text-align: center;
 }
 
@@ -55,13 +56,6 @@ body {
   font-weight: 600;
   margin-bottom: 15px;
 }
-/* 
-.footer {
-  text-align: center;
-  padding: 40px 0;
-  font-size: 0.9rem;
-  color: #888;
-} */
 
 a {
   text-decoration: none;
