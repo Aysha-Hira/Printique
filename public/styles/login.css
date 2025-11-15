@@ -1,0 +1,60 @@
+body {
+  background-color: #d1bfb3;
+  font-family: "Forum", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-card h2 {
+  color: #a18867;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.form-control {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 12px;
+}
+
+.btn-login {
+  background-color: #a18867;
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 30px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #8e7554;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-footer a {
+  color: #a18867;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}

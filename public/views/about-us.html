@@ -1,13 +1,153 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Printique</title>
-    <style>
-      div {
-        border: 2px solid green;
-      }
-    </style>
-</head>
-<body>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ad obcaecati odit, iure tempora consectetur aliquid quo adipisci magnam, veritatis aperiam iste quibusdam sed voluptatem error assumenda hic corrupti suscipit!</h1>
-</body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://db.onlinewebfonts.com/c/ff57d0d9febdd79818b0bfc7b1e15dd8?family=Forum"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../styles/about-us.css" />
+    <link rel="stylesheet" href="../styles/footer.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3">
+      <div class="container">
+        <a class="navbar-brand" href="/">PRINTIQUE</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section container">
+      <h1>About Us</h1>
+      <div class="about-card">
+        <h3>Who We Are</h3>
+        <p>
+          At <strong>Printique</strong>, we believe your home should reflect
+          you. That’s why we merge creativity with 3D printing technology —
+          allowing you to design décor that’s as unique as your personality. Our
+          platform lets you customize lamps, shelves, tables, and more using
+          your own ideas or AI-generated designs.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Our Vision</h3>
+        <p>
+          To revolutionize home décor by making personalization, creativity, and
+          sustainability accessible to everyone — transforming houses into
+          spaces that truly feel like home.
+        </p>
+      </div>
+
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>
+          To empower individuals to design and own one-of-a-kind 3D-printed
+          décor by:
+        </p>
+        <ul class="text-start mx-auto" style="max-width: 700px">
+          <li>
+            Offering easy-to-use online customization tools and AI design
+            support.
+          </li>
+          <li>Using sustainable and affordable 3D printing materials.</li>
+          <li>Providing Augmented Reality previews before printing.</li>
+          <li>
+            Delivering eco-friendly products that blend art, technology, and
+            individuality.
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>Contact Us</h3>
+        <form class="mt-3 mx-auto" style="max-width: 600px">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark">Send Message</button>
+        </form>
+
+        <p>
+         
+        
+        <div class="social-links mt-3">
+           Email:
+          <a href="mailto:support@printique.com">support@printique.com</a><br>
+          Follow us:
+          <a href="https://www.instagram.com/printique_uae?igsh=cnpmeXI1cDJkbnE1&utm_source=qr">Instagram</a> | <a href="#">YouTube</a> |
+          <a href="#">TikTok</a>
+        </div>
+        </p>
+      </div>
+      
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <p class="brand">PRINTIQUE</p>
+
+        <div class="social-links">
+          <a href="https://www.instagram.com/printique_uae?igsh=cnpmeXI1cDJkbnE1&utm_source=qr">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="#">TikTok</a>
+        </div>
+
+        <p class="copy">© 2025 Printique. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

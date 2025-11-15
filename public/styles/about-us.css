@@ -1,0 +1,75 @@
+body {
+  background-color: #d1bfb3;
+  color: #26211d;
+  font-family: "Forum", sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #1a1a1a !important;
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500;
+  margin-right: 15px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #a18867 !important;
+  border: 2px solid #a18867;
+  border-radius: 15%;
+}
+
+/* About Page Styling */
+.about-section {
+  padding: 80px 200px;
+  text-align: center;
+}
+
+.about-section h1 {
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.about-card {
+  background-color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.about-card h3 {
+  color: #a18867;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+/* 
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.9rem;
+  color: #888;
+} */
+
+a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+a:hover {
+  color: #a18867 !important;
+
+
+}

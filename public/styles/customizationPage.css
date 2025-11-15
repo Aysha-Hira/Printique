@@ -1,20 +1,123 @@
 body {
   background-color: #d1bfb3;
   color: #26211d;
-  font-family: "Poppins", sans-serif;
+  font-family: "Forum", sans-serif;
 }
 
-.placeholder-box {
-  background-color: #a50b0b;
-  border-radius: 5px;
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.nav-link {
+  color: #333;
+  transition: color 0.2s ease;
+}
+.nav-link:hover {
+  color: #007bff;
+}
+
+.customization-container {
+  max-width: 1100px;
+  margin: 3rem auto;
+  background: #b48464;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.customization-content {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 50%;
-  padding-bottom: 50%;
 }
 
-.search-bar {
-  max-width: 100%;
+label {
+  margin-top: -6px;
 }
+
+.product-preview {
+  flex: 1 1 50%;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+.product-preview img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.customization-form {
+  flex: 1 1 50%;
+  padding: 2rem;
+}
+.customization-form h2 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.customization-form .form-control {
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.form-check {
+  margin-bottom: 1rem;
+}
+
+.color-inputs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#secondary-color {
+  display: none;
+}
+
+.btn-custom {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  margin-right: 0.5rem;
+  transition: all 0.2s ease;
+}
+.btn-custom:hover {
+  background-color: #0056b3;
+}
+
+.designs-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+  text-align: center;
+}
+.designs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.designs-grid img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+.designs-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: #777;
+} */

@@ -1,36 +1,7 @@
-//Simple method to show hello world on browser this is for testing first api
-export const fetchUser = async (req, res) => {
-  try {
-    return res.json("hello world");
-  } catch (error) {
-    res.status(500).json({ message: "internal server error" });
-  }
-};
-
 //now writting other apis thats why putting import here
 import User from "../models/userModel.js";
 
-//Create user API
-export const create = async (req, res) => {
-  try {
-    const userData = new User(req.body);
-    //validate if user laready exist
-    const { email } = userData;
-    const userExist = await User.findOne({ email });
-
-    if (userExist) {
-      return res.status(400).json({ message: "user already exist" });
-    }
-
-    const savedUserData = await userData.save();
-    res.status(200).json(savedUserData);
-  } catch (error) {
-    res.status(500).json({ message: "internal server error" });
-  }
-};
-
 //fetch all users in database
-
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -71,8 +42,67 @@ export const deleteUser = async (req, res) => {
     }
 
     await User.findByIdAndDelete(id);
-    res.status(201).jso({ message: "user deleted successfully" });
+    res.status(201).json({ message: "user deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
   }
 };
+
+// signing up 
+export const signUpUser = async (req, res) => {
+  try {
+    const userData = new User(req.body);
+    //validate if user laready exist
+    const { name, email } = userData;
+    const userExist = await User.findOne({ email });
+
+    if (userExist) {
+      return res.status(400).json({ message: "user already exist" });
+    }
+
+    const savedUserData = await userData.save();
+    res.status(200).json({ message: "User signed up successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
+};
+
+
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const userExist = await User.findOne({ email });
+
+    if (!userExist) {
+      return res.status(400).json({ message: "User doesn't exist" });
+    }
+
+    if (userExist.password !== password) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    res.status(200).json({ message: "Login successful!" });
+    
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+export const getProfile = async (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "../public/views"));
+
+  } catch (error) {
+     res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export const getProfileByName = async (req, res) => {
+  try {
+    
+    
+  } catch (error) {
+     res.status(500).json({ message: "Internal server error" });
+  }
+}

@@ -18,10 +18,10 @@ fetch("/products/getAllProducts")
             <p class="card-description">${product.description}</p>
             <p class="card-price">Starting from €${product.price.toFixed(2)}</p>
             <button class="select-btn" id="${product.name
-              .replace(" ", '')
+              .replace(" ", "")
               .toLowerCase()}"
               onclick="customize('${product.name.replace(
-                ' ',
+                " ",
                 ""
               )}')">Select</button>
           </div>

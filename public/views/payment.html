@@ -1,32 +1,230 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment Catalogue | Printique</title>
     <style>
-      div {
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f6f7fb;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 30px;
+      }
+
+      .payment-container {
+        width: 90%;
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .payment-option {
         border: 2px solid gold;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 15px;
+      }
+
+      .payment-option h3 {
+        margin: 0 0 10px;
+        color: #444;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="month"],
+      input[type="email"] {
+        width: 95%;
+        padding: 8px;
+        margin-top: 4px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button[type="submit"] {
+        background-color: gold;
+        color: black;
+        font-weight: bold;
+      }
+
+      button[type="reset"] {
+        background-color: #ddd;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .method-select {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+
+      .method-select label {
+        cursor: pointer;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="radio"] {
+        margin-right: 6px;
       }
     </style>
   </head>
+
   <body>
-    <h1>Payment</h1>
-    <div class="card-container">
-      <form action="" method="post">
-        <label for="card_number">Card Number:
-          <input name="card_number" id="card_number" type="number" />
-          </label.5><br />
-        <label for="expiry_month"
-          >Expiry Month: <input type="number" name="expiry_month" /></label
-        ><br />
-        <label for="cvv"> CVV: <input type="number" name="cvv" /></label><br />
-        <label for="name">Name: <input type="number" name="name" /></label
-        ><br />
-        <div>
-          <button type="submit">Pay</button>
-          <button type="reset">Cancel</button>
-        </div>
-      </form>
+    <h1>Payment Options</h1>
+    <div class="payment-container">
+      <div class="method-select">
+        <label>
+          <input type="radio" name="method" value="card" checked /> Card
+        </label>
+        <label>
+          <input type="radio" name="method" value="paypal" /> PayPal
+        </label>
+        <label>
+          <input type="radio" name="method" value="upi" /> UPI/Wallet
+        </label>
+      </div>
+
+      <!-- CARD PAYMENT -->
+      <div id="card" class="payment-option">
+        <h3>Pay with Card</h3>
+        <form id="cardForm">
+          <label for="card_number"
+            >Card Number:
+            <input
+              name="card_number"
+              id="card_number"
+              type="number"
+              placeholder="1234 5678 9012 3456"
+              required
+          /></label>
+
+          <label for="expiry"
+            >Expiry Date:
+            <input type="month" name="expiry" id="expiry" required />
+          </label>
+
+          <label for="cvv"
+            >CVV:
+            <input
+              type="number"
+              name="cvv"
+              id="cvv"
+              placeholder="123"
+              required
+            />
+          </label>
+
+          <label for="name"
+            >Name on Card:
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="John Doe"
+              required
+            />
+          </label>
+
+          <div class="btn-container">
+            <button type="submit">Pay</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PAYPAL -->
+      <div id="paypal" class="payment-option hidden">
+        <h3>Pay with PayPal</h3>
+        <form id="paypalForm">
+          <label for="paypal_email"
+            >PayPal Email:
+            <input
+              type="email"
+              name="paypal_email"
+              id="paypal_email"
+              placeholder="you@example.com"
+              required
+            />
+          </label>
+          <div class="btn-container">
+            <button type="submit">Continue to PayPal</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- UPI / WALLET -->
+      <div id="upi" class="payment-option hidden">
+        <h3>Pay with UPI / Wallet</h3>
+        <form id="upiForm">
+          <label for="upi_id"
+            >UPI ID or Wallet Number:
+            <input
+              type="text"
+              name="upi_id"
+              id="upi_id"
+              placeholder="yourname@bank"
+              required
+            />
+          </label>
+          <div class="btn-container">
+            <button type="submit">Pay Now</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
 
-    <script></script>
+    <script>
+      const methodRadios = document.querySelectorAll('input[name="method"]');
+      const sections = {
+        card: document.getElementById("card"),
+        paypal: document.getElementById("paypal"),
+        upi: document.getElementById("upi"),
+      };
+
+      methodRadios.forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+          for (let key in sections) {
+            sections[key].classList.add("hidden");
+          }
+          sections[e.target.value].classList.remove("hidden");
+        });
+      });
+    </script>
   </body>
 </html>
