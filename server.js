@@ -91,7 +91,7 @@ app.use("/about-us", aboutUsRoute);
 // import OpenAI from "openai";
 
 // const openai = new OpenAI({
-//   apiKey: "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",
+//   
 // });
 
 // const response = openai.responses.create({
