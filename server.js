@@ -45,57 +45,13 @@ import productRoute from "./routes/productRoutes.js";
 import homeRoute from "./routes/homeRoute.js";
 import designRoute from "./routes/designRoute.js";
 import aboutUsRoute from "./routes/aboutUsRoute.js";
+import robotRoute from "./routes/robotRoute.js";
 
 // connects the link to the routes
 // app.use(link, route);
+app.use("/robots.txt", robotRoute);
 app.use("/", homeRoute);
-// app.use("/home", homeRoute);
 app.use("/user", userRoute);
 app.use("/products", productRoute);
 app.use("/designs", designRoute);
 app.use("/about-us", aboutUsRoute);
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => cb(null, "uploads/"),
-//   filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname)),
-// });
-
-// const upload = multer({storage});
-
-// app.post("/designs", upload.single("design"), async (req, res) => {
-
-// })
-
-// const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
-// app.post("/generate", async (req, res) => {
-//   const { prompt, color, extra } = req.body;
-
-//   try {
-//     const response = await client.images.generate({
-//       model: "gpt-imag e-1",
-//       prompt: `${prompt}. Use color scheme ${color}. ${extra || ""}`,
-//       size: "512x512"
-//     });
-
-//     res.json({ image: response.data[0].url });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-
-// app.listen(5000, () => console.log("Server running on port 5000"));
-
-// import OpenAI from "openai";
-
-// const openai = new OpenAI({
-//   
-// });
-
-// const response = openai.responses.create({
-//   model: "gpt-5-nano",
-//   input: "write a haiku about ai",
-//   store: true,
-// });
-
-// response.then((result) => console.log(result.output_text));
