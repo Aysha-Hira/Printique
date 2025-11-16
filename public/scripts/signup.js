@@ -4,6 +4,7 @@ const messageBox = document.getElementById("messageBox");
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
+  const username = document.getElementById("username").value.trim();
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -11,8 +12,14 @@ form.addEventListener("submit", async function (e) {
     .getElementById("confirm_password")
     .value.trim();
 
-  if (!name || !email || !password || !confirm_password) {
+  if (!username || !name || !email || !password || !confirm_password) {
     messageBox.textContent = "Please fill all fields.";
+    messageBox.className = "message error";
+    return;
+  }
+
+  if (username.includes("/")) {
+    messageBox.textContent = "Username cannot include '/'";
     messageBox.className = "message error";
     return;
   }
@@ -35,6 +42,7 @@ form.addEventListener("submit", async function (e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      username: username,
       name: name,
       email,
       password,

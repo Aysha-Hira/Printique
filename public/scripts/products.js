@@ -1,3 +1,12 @@
+const url = window.location.pathname;
+const pathParts = url.split("/");
+// link.com -> 0
+// product -> 1
+// username -> 2?
+
+var userName = "guest";
+if (pathParts.length > 2) userName = pathParts[pathParts.length - 1];
+
 const container = document.getElementById("container-product");
 fetch("/products/getAllProducts")
   .then((res) => res.json())
@@ -16,12 +25,14 @@ fetch("/products/getAllProducts")
           <div class="card-info">
             <h5 class="card-title">${product.name}</h5>
             <p class="card-description">${product.description}</p>
-            <p class="card-price">Starting from €${product.min_price.toFixed(2)}</p>
+            <p class="card-price">Starting from €${product.min_price.toFixed(
+              2
+            )}</p>
             <button class="select-btn" id="${product.name
-              .replace(" ", '')
+              .replace(" ", "")
               .toLowerCase()}"
               onclick="customize('${product.name.replace(
-                ' ',
+                " ",
                 ""
               )}')">Select</button>
           </div>
@@ -33,5 +44,5 @@ fetch("/products/getAllProducts")
   .catch((error) => console.error(error));
 
 function customize(productType) {
-  window.location.href = `/customization/${productType}`;
+  window.location.href = `${userName}/customization/${productType}`;
 }

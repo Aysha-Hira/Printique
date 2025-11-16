@@ -3,17 +3,18 @@ import {
   addProduct,
   getAllProductsInfo,
   getAProduct,
-  getAProductPrice,
+  getCustomizationPageByName,
   getProductsPage,
   getProductsPageByName,
 } from "../controllers/productController.js";
 
 const router = express.Router();
 router.get("/", getProductsPage); // home
-router.get("/getAllProducts", getAllProductsInfo);
-router.get("/getProduct/:type", getAProduct);
-router.get("/getProductPrice/:type", getAProductPrice);
-router.get("/:name", getProductsPageByName); 
-router.post("/add-product", addProduct);
+router.get("/getAllProducts", getAllProductsInfo); // to get all products
+router.get("/guest/customization/:type", getCustomizationPageByName);
+router.get("/:username/customization/:type", getCustomizationPageByName);
+router.get("/getProduct/:type", getAProduct); // to get info of a single product
+router.get("/:username", getProductsPageByName); // home page if the user logs in
+router.post("/add-product", addProduct); // to add products to db
 
 export default router;

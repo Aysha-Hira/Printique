@@ -10,12 +10,15 @@ export const getProductsPage = async (req, res) => {
 };
 
 export const getProductsPageByName = async (req, res) => {
-  const name = req.params.name;
-  const userExist = await User.findOne({name: name});
-  if (!userExist) 
-    return res.status(404).json({ message: "user not found" });
+  try {
+    const username = req.params.username;
+    const userExist = await User.findOne({ username: username });
+    if (!userExist) return res.status(404).json({ message: "user not found" });
 
-  return getProductsPage(req, res);
+    return getProductsPage(req, res);
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
 };
 
 export const getAllProductsInfo = async (req, res) => {
@@ -53,35 +56,12 @@ export const getAProduct = async (req, res) => {
   }
 };
 
-export const getAProductPrice = async (req, res) => {
-  try {
-    const type = req.params.type;
-
-    if (!type || type.trim().length === 0) {
-      return res.status(400).json({ message: "Product type is required" });
-    }
-
-    const product = await Product.findOne({ type });
-
-    if (!product) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-
-    const price = Number((Math.random() * (product.max_price - product.min_price) + product.min_price).toFixed(2))
-    res.status(200).json(price)
-
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Internal server error" });
-  }
-};
-
 export const addProduct = async (req, res) => {
   try {
     const productData = new Product(req.body);
     if (
       !productData ||
-      !productData.name ||
+      !productData.username ||
       !productData.min_price ||
       !productData.max_price ||
       !productData.images ||
@@ -93,8 +73,9 @@ export const addProduct = async (req, res) => {
       ${productData},`,
       });
 
-    const { name,min_price, max_price, images, inStock, isActive } = productData;
-    const productExist = await Product.findOne({ name: name });
+    const { username, min_price, max_price, images, inStock, isActive } =
+      productData;
+    const productExist = await Product.findOne({ username: username });
 
     if (productExist) {
       return res.status(400).json({ message: "product already exist" });
@@ -134,9 +115,35 @@ export const deleteProduct = async (req, res) => {
     }
 
     const product = await Product.findByIdAndDelete(id);
-    res
-      .status(201)
-      .json({ message: "product '" + product.name + "' deleted successfully" });
+    res.status(201).json({
+      message: "product '" + product.username + "' deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
+};
+
+export const getCustomizationPage = async (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, "../public/views/customization.html"));
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
+};
+
+export const getCustomizationPageByName = async (req, res) => {
+  try {
+    const name = req.params.username;
+    if (name == "Guest") getCustomizationPage(req, res);
+
+    const user = await User.find({ username: name });
+    if (!user) return res.status(404).json({ mess: "user not found" });
+
+    console.log(req.params.type);
+    const type = await Product.findOne({ name: req.params.type });
+    if (!type) return res.status(404).json({ mess: "product not found" });
+
+    return getCustomizationPage(req, res);
   } catch (error) {
     res.status(500).json({ message: "internal server error" });
   }

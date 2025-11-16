@@ -1,11 +1,17 @@
-const url = window.location.pathname;
-const pathParts = url.split("/");
+document.addEventListener("DOMContentLoaded", () => {
+  const url = window.location.pathname;
+  const pathParts = url.split("/"); 
 
-var userName = "Guest";
-if (pathParts.length > 2) {
-  userName = pathParts[2];
-  document.getElementById("products").href += `/${userName}`;
-  document.getElementById("about-us").href += `/${userName}`;
-  document.getElementById("login").innerHTML = "Profile";
-  document.getElementById("login").setAttribute("href", `/user/profile/${userName}`);
-}
+  let userName = "Guest";
+  if (pathParts.length > 2) {
+    userName = decodeURIComponent(pathParts[2]); // decode emails safely
+
+    document.getElementById("products").href = `/products/${userName}`;
+    document.getElementById("about-us").href = `/about-us/${userName}`;
+    document.getElementById("saved-designs").href = `/designs/list/${userName}`;
+    
+    const login = document.getElementById("login");
+    login.textContent = "Profile";
+    login.href = `/user/profile/${userName}`;
+  }
+});

@@ -58,6 +58,11 @@
               <a class="nav-link" href="/products" id="products">Products</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/designs" id="saved-designs"
+                >Saved Designs</a
+              >
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/about-us" id="about-us">About Us</a>
             </li>
             <li class="nav-item">
@@ -90,75 +95,83 @@
     </div>
 
     <!-- Checkout Summary -->
-   <!-- Checkout Modal -->
-<div id="checkout-modal" class="checkout-modal hidden">
-  <div class="checkout-content">
-    <button class="close-btn">&times;</button>
-    <h4 class="mb-3">Checkout Summary</h4>
-    <ul id="checkout-list" class="list-group mb-3"></ul>
-    <button id="confirm-btn" class="btn btn-primary w-100">Confirm Purchase</button>
-  </div>
-</div>
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal hidden">
+      <div class="checkout-content">
+        <button class="close-btn">&times;</button>
+        <h4 class="mb-3">Checkout Summary</h4>
+        <ul id="checkout-list" class="list-group mb-3"></ul>
+        <button id="confirm-btn" class="btn btn-primary w-100">
+          Confirm Purchase
+        </button>
+      </div>
+    </div>
 
-<style>
-.selected-badge {
-  background: #28a745;
-  color: white;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 5px;
-  display: inline-block;
-  margin-top: 8px;
-}
+    <style>
+      .selected-badge {
+        background: #28a745;
+        color: white;
+        font-weight: bold;
+        padding: 4px 8px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 8px;
+      }
 
+      /* Modal background overlay */
+      .checkout-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(3px);
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+      }
+      .checkout-modal.hidden {
+        display: none;
+      }
 
-  /* Modal background overlay */
-  .checkout-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(3px);
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  .checkout-modal.hidden {
-    display: none;
-  }
+      /* Popup box */
+      .checkout-content {
+        background: white;
+        padding: 25px;
+        width: 380px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        position: relative;
+        animation: popup 0.2s ease-out;
+      }
 
-  /* Popup box */
-  .checkout-content {
-    background: white;
-    padding: 25px;
-    width: 380px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    position: relative;
-    animation: popup 0.2s ease-out;
-  }
+      @keyframes popup {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
 
-  @keyframes popup {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  /* Close button */
-  .close-btn {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 25px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-</style>
+      /* Close button */
+      .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../scripts/design.js"></script>
+    <script src="../scripts/updateLink.js"></script>
   </body>
 </html>

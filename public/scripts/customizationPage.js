@@ -53,6 +53,7 @@ document.getElementById("save").addEventListener("click", (e) => {
   e.preventDefault();
 
   const formData = new FormData(formElement);
+  formData.append("username", pathParts[2]);
 
   fetch("/designs/save", {
     method: "POST",
@@ -61,9 +62,11 @@ document.getElementById("save").addEventListener("click", (e) => {
     .then(async (res) => {
       let data;
       try {
+        
         data = await res.json();
+        
       } catch (err) {
-        throw new Error("Server did not return JSON (check server errors)");
+        console.log(err);
       }
 
       if (!res.ok) throw new Error(data.error || "Saving failed");

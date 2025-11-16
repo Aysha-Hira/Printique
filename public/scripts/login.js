@@ -15,9 +15,9 @@ loginForm.addEventListener("submit", async (e) => {
     });
 
     const data = await res.json();
+    console.log(data);
 
-    if (!res.ok) 
-      throw new Error(data.message || "Login failed");
+    if (!res.ok) throw new Error(data.message || "Login failed");
 
     loginForm.reset();
     messageDiv.style.color = "green";
@@ -25,9 +25,9 @@ loginForm.addEventListener("submit", async (e) => {
 
     setTimeout(() => {
       // const token = data.token;
-      window.location.href = `/`;
+
+      window.location.href = `/home/${data.username}`;
     }, 1000);
-    
   } catch (err) {
     messageDiv.style.color = "red";
     messageDiv.textContent =

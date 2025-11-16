@@ -43,17 +43,15 @@ mongoose
 import userRoute from "./routes/userRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import homeRoute from "./routes/homeRoute.js";
-import customizationRoute from "./routes/customizerRoute.js";
 import designRoute from "./routes/designRoute.js";
 import aboutUsRoute from "./routes/aboutUsRoute.js";
 
 // connects the link to the routes
 // app.use(link, route);
 app.use("/", homeRoute);
-app.use("/home", homeRoute);
+// app.use("/home", homeRoute);
 app.use("/user", userRoute);
 app.use("/products", productRoute);
-app.use("/customization", customizationRoute);
 app.use("/designs", designRoute);
 app.use("/about-us", aboutUsRoute);
 

@@ -30,7 +30,7 @@ route.delete("deleteUser/:id", deleteUser);
 
 route.get("/profile", getProfile);
 
-route.get(`/profile/:name`, getProfileByName);
+route.get(`/profile/:username`, getProfileByName);
 
 //export route
 export default route;

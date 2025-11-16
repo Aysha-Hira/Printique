@@ -48,13 +48,15 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-// signing up 
+// signing up
 export const signUpUser = async (req, res) => {
   try {
     const userData = new User(req.body);
     //validate if user laready exist
-    const { name, email } = userData;
-    const userExist = await User.findOne({ email });
+    const { username, name, email } = userData;
+    const userExist = await User.findOne({
+      $or: [{ email: email }, { username: username }],
+    });
 
     if (userExist) {
       return res.status(400).json({ message: "user already exist" });
@@ -66,7 +68,6 @@ export const signUpUser = async (req, res) => {
     res.status(500).json({ message: "internal server error" });
   }
 };
-
 
 export const loginUser = async (req, res) => {
   try {
@@ -81,28 +82,28 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    res.status(200).json({ message: "Login successful!" });
-    
+    res.status(200).json({username: userExist.username, message: "Login successful!" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-
 export const getProfile = async (req, res) => {
   try {
     res.sendFile(path.join(__dirname, "../public/views"));
-
   } catch (error) {
-     res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
 export const getProfileByName = async (req, res) => {
   try {
-    
-    
+    const name = req.params.username;
+    const userExist = await User.findOne({ username: name });
+    if (!userExist) return res.status(404).json({ message: "user not found" });
+
+    return getProfile(req, res);
   } catch (error) {
-     res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
-}
+};

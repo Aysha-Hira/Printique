@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 // creates schema (basically columns' headers of a table)
 const productSchema = new mongoose.Schema(
   {
-    name: {
+    type: {
       type: String,
       required: true,
       unique: true,

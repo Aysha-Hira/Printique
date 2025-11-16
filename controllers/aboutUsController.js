@@ -2,14 +2,23 @@ import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-import ContactUsForm from "../models/ContactUsModel.js"
+import ContactUsForm from "../models/ContactUsModel.js";
+import User from "../models/userModel.js";
 
 export const getAboutUsPage = async (req, res) => {
   res.sendFile(path.join(__dirname, "../public/views/about-us.html"));
 };
 
 export const getAboutUsPageByName = async (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/views/about-us.html"));
+  try {
+    const name = req.params.username;
+    const user = await User.find({ username: name });
+    if (!user) return res.status(404).json({ mess: "user not found" });
+
+    return getAboutUsPage(req, res);
+  } catch (error) {
+    res.status(500).json({ message: "internal server error" });
+  }
 };
 
 export const submitContactUsForm = async (req, res) => {
