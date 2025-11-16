@@ -27,7 +27,7 @@ body {
 .nav-link:hover {
   color: #a18867 !important;
   border: 2px solid #a18867;
-  border-radius: 15%;
+  border-radius: 10px;
 }
 
 /* Hero Section */
@@ -52,17 +52,20 @@ body {
 }
 
 .hero .btn {
-  background-color: #a18867;
-  border: none;
-  color: white;
+  border: 3px solid #a18867;
+  /* border: none; */
+  color: #8e7554;
+  background-color: white;
   font-weight: 600;
   padding: 12px 30px;
-  border-radius: 30px;
+  border-radius: 10px;
   transition: background-color 0.3s;
 }
 
 .hero .btn:hover {
   background-color: #8e7554;
+   border-radius: 10px; 
+   color: white;
 }
 
 /* Features */
@@ -90,34 +93,6 @@ body {
   font-weight: 600;
 }
 
-/* Why Choose Us */
-.why-us {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.why-us h2 {
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-.why-us ul {
-  list-style: none;
-  padding: 0;
-}
-
-.why-us li {
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
-
-/* .footer {
-  text-align: center;
-  padding: 40px 0;
-  font-size: 0.9rem;
-  color: #888;
-} */
-
 .feature-card {
   background-color: #fff;
   border: none;
@@ -128,10 +103,10 @@ body {
 
 .feature-card img {
   width: 100%;
-  aspect-ratio: 1 / 1; /* keeps all images square */
-  object-fit: cover; /* fills the box without distortion */
-  border-radius: 10px; /* matches the card’s rounded corners */
-  background-color: #f5f5f5; /* subtle background for empty space */
+  aspect-ratio: 1 / 1;
+  object-fit: cover; 
+  border-radius: 10px; 
+  background-color: #f5f5f5; 
 }
 
 .feature-card:hover {
@@ -142,10 +117,3 @@ body {
   color: #a18867;
   font-weight: 600;
 }
-
-/* h1 {
-  font-family: "Forum";
-  /* font-weight: 200; */
-/* font-style: normal; *
-} */
-

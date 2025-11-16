@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const pathParts = url.split("/"); 
 
   let userName = "Guest";
-  if (pathParts.length > 2) {
-    userName = decodeURIComponent(pathParts[2]); // decode emails safely
+
+  if (pathParts.length > 2 && decodeURIComponent(pathParts[2]) != 'guest') {
+    userName = decodeURIComponent(pathParts[2]);
 
     document.getElementById("products").href = `/products/${userName}`;
     document.getElementById("about-us").href = `/about-us/${userName}`;
@@ -12,6 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const login = document.getElementById("login");
     login.textContent = "Profile";
-    login.href = `/user/profile/${userName}`;
+    login.href = `/user/${userName}/profile`;
   }
 });

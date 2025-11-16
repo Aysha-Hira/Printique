@@ -1,29 +1,10 @@
-/* body {
-
-  background-color: #d1bfb3;
-  /* background-image: radial-gradient(#ad5824 0.5px, 0.5px);
-  background-size: 20px 20px; */
-
-/* background-color: #d1bfb3; *
-  color: #26211d;
-  font-family: "Forum", sans-serif;
-} */
-
 body {
   background-color: #d1bfb3;
-  /* background-color: #e6bea3; */
-  /* background-color: #efceb8; */
   background-image: url(/public/assets/images/paper_fibers.png);
   background-repeat: repeat;
   background-size: 300px 300px;
   font-family: "Forum", sans-serif;
 }
-
-/* body {
-  background-color: #d1bfb3;
-  background-image: radial-gradient(#b99e8b 0.6px, transparent 0.6px);
-  background-size: 20px 20px;
-} */
 
 /* Navbar */
 .navbar {
@@ -48,7 +29,7 @@ body {
 .nav-link:hover {
   color: #a18867 !important;
   border: 2px solid #a18867;
-  border-radius: 15%;
+  border-radius: 10px;
 }
 
 /* Product Grid */
@@ -58,6 +39,7 @@ body {
   gap: 1.5rem;
   padding: 1.5rem;
   transition: all 0.4s ease; /* helps smooth layout change */
+  overflow: visible;
 }
 
 /* Product Card */
@@ -114,14 +96,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* The magic: smooth width expansion in grid */
-/* .card:hover {
-  transform: translateY(-10px);
-  grid-column: span 2;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-  z-index: 5; /* lifts above neighbors *
-} */
-
 .card:hover {
   grid-column: span 2;
   transform: scale(1.02);
@@ -161,7 +135,7 @@ body {
   background-color: #e0a65b;
   border: none;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 8px 16px;
   margin-top: 15px;
   transition: background-color 0.3s ease;

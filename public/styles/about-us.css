@@ -27,7 +27,7 @@ body {
 .nav-link:hover {
   color: #a18867 !important;
   border: 2px solid #a18867;
-  border-radius: 15%;
+  border-radius: 10px;
 }
 
 /* About Page Styling */

@@ -24,8 +24,6 @@ loginForm.addEventListener("submit", async (e) => {
     messageDiv.textContent = data.message;
 
     setTimeout(() => {
-      // const token = data.token;
-
       window.location.href = `/home/${data.username}`;
     }, 1000);
   } catch (err) {

@@ -5,6 +5,7 @@ import {
   getHomePageByName,
   getLoginPage,
   getPaymentPage,
+  getPaymentPageByName,
   getSignUpPage,
 } from "../controllers/homeController.js";
 
@@ -15,7 +16,7 @@ router.get("/home", getHomePage);
 router.get("/home/:username", getHomePageByName);
 
 router.get("/payment", getPaymentPage);
-// router.get("/payment/:username", getPaymentPage);
+router.get("/payment/:username/:price", getPaymentPageByName);
 
 router.get("/error", getErrorPage);
 

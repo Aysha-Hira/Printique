@@ -2,12 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="google-site-verification"
-      content="WUjeMSeMv1px3dQmbNjIftA-jfJR-TE3bRqRLq3IM0g"
-    />
-    <title>Home | Printique</title>
-    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile | Printique</title>
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -22,9 +20,10 @@
       href="/assets/images/logo/logo_4.jpg"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="../styles/home.css" />
-    <link rel="stylesheet" href="../styles/footer.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+    <link rel="stylesheet" href="/styles/profile.css" />
   </head>
+
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg py-3">
@@ -61,28 +60,22 @@
         </div>
       </div>
     </nav>
+    <div class="container" style="padding: 20px">
+      <div class="card shadow-sm mx-auto p-4" style="max-width: 600px">
+        <h2 id="name" class="mb-2"></h2>
 
-    <!-- Hero Section -->
-    <section class="hero container">
-      <h1>Designed By You, Printed By Us</h1>
-      <p>
-        Create unique, eco-friendly 3D-printed décor — lamps, shelves, tables,
-        and more — customized just for you. Upload your design or let AI bring
-        your ideas to life.
-      </p>
-      <a href="/products" class="btn">Start Designing</a>
-    </section>
+        <p><strong>Username:</strong> <span id="username"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Joined Printique on:</strong> <span id="joined"></span></p>
 
-    <!-- Features Section -->
-    <section
-      class="features container text-center my-5"
-      id="feature-cards-container"
-    >
-      <h2 class="mb-5">Featured Products Designed By Our Customers</h2>
-      <div class="row g-4"></div>
-    </section>
+        <div class="designs mt-4">
+          <h4 class="mb-3">Created Designs</h4>
+          <div id="design-list">Loading designs...</div>
+        </div>
+      </div>
+    </div>
 
-    <!-- <footer class="footer">© 2025 Printique. All rights reserved.</footer> -->
     <footer class="footer">
       <div class="footer-container">
         <p class="brand">PRINTIQUE</p>
@@ -98,8 +91,9 @@
       </div>
     </footer>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../scripts/home.js"></script>
-    <script src="../scripts/updateLink.js"></script>
+    <script src="/scripts/profile.js"></script>
+    <script src="/scripts/updateLink.js"></script>
   </body>
 </html>

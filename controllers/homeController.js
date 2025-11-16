@@ -22,8 +22,7 @@ export const getHomePageByName = async (req, res) => {
     console.log(name);
     const userExist = await User.findOne({ username: name });
     // console.log(userExist);
-    if (!userExist) 
-      return res.status(404).json({ message: "user not found" });
+    if (!userExist) return res.status(404).json({ message: "user not found" });
 
     return getHomePage(req, res);
   } catch (error) {
@@ -33,6 +32,20 @@ export const getHomePageByName = async (req, res) => {
 
 export const getPaymentPage = async (req, res) => {
   res.sendFile(path.join(__dirname, "../public/views/payment.html"));
+};
+
+export const getPaymentPageByName = async (req, res) => {
+  try {
+    const name = req.params.username;
+    if (name == "guest") return getPaymentPage(req, res);
+
+    const userExist = await User.findOne({ username: name });
+    if (!userExist) return res.status(404).json({ message: "user not found" });
+
+    return getPaymentPage(req, res);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const getErrorPage = async (req, res) => {

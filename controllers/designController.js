@@ -14,6 +14,8 @@ export const getDesignPage = async (req, res) => {
 export const getDesignPageByName = async (req, res) => {
   try {
     const name = req.params.username;
+    if (name == 'guest')
+      return getDesignPage(req, res);
     const user = await User.findOne({ username: name });
     if (!user) return res.status(404).json({ mess: "user not found" });
 

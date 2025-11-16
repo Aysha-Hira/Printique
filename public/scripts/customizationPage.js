@@ -82,3 +82,14 @@ document.getElementById("save").addEventListener("click", (e) => {
       console.error("Save error:", err);
     });
 });
+
+const container = document.getElementById('recently-designed-images')
+for (let i = 1; i < 6; i++) {
+  const image = document.getElementById(`${i}`)
+  image.src = `/assets/images/${pathParts[pathParts.length - 1]}/${i}.jpg`;
+}
+
+
+const previewImg = document.getElementById('preview-img')
+previewImg.src = `/assets/images/${pathParts[pathParts.length - 1]}/${Math.floor(Math.random() * 4) + 1}.jpg`;
+previewImg.style.objectFit = 'fill';

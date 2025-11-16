@@ -6,8 +6,8 @@ import {
   deleteUser,
   loginUser,
   signUpUser,
-  getProfile,
   getProfileByName,
+  getUserProfile,
 } from "../controllers/userController.js";
 
 //get the route from express
@@ -28,9 +28,8 @@ route.put("/update/:id", updateData);
 //route for delete user
 route.delete("/deleteUser/:id", deleteUser);
 
-route.get("/profile", getProfile);
-
-route.get(`/profile/:username`, getProfileByName);
+route.get(`/:username/profile`, getProfileByName);
+route.get(`/getprofile/:username`, getUserProfile);
 
 //export route
 export default route;

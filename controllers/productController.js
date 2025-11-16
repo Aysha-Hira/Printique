@@ -45,6 +45,7 @@ export const getAProduct = async (req, res) => {
 
     const product = await Product.findOne({ type });
 
+
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
@@ -61,7 +62,7 @@ export const addProduct = async (req, res) => {
     const productData = new Product(req.body);
     if (
       !productData ||
-      !productData.username ||
+      !productData.name ||
       !productData.min_price ||
       !productData.max_price ||
       !productData.images ||
@@ -75,7 +76,7 @@ export const addProduct = async (req, res) => {
 
     const { username, min_price, max_price, images, inStock, isActive } =
       productData;
-    const productExist = await Product.findOne({ username: username });
+    const productExist = await Product.findOne({ name: username });
 
     if (productExist) {
       return res.status(400).json({ message: "product already exist" });

@@ -1,4 +1,8 @@
 //now writting other apis thats why putting import here
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import User from "../models/userModel.js";
 
 //fetch all users in database
@@ -82,15 +86,9 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
-    res.status(200).json({username: userExist.username, message: "Login successful!" });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
-
-export const getProfile = async (req, res) => {
-  try {
-    res.sendFile(path.join(__dirname, "../public/views"));
+    res
+      .status(200)
+      .json({ username: userExist.username, message: "Login successful!" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -99,11 +97,29 @@ export const getProfile = async (req, res) => {
 export const getProfileByName = async (req, res) => {
   try {
     const name = req.params.username;
+    if (name == "guest") return getProfile(req, res);
+
     const userExist = await User.findOne({ username: name });
     if (!userExist) return res.status(404).json({ message: "user not found" });
 
-    return getProfile(req, res);
+    return res.sendFile(path.join(__dirname, "../public/views/profile.html"));
   } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const name = req.params.username;
+    if (name == "guest") return getProfile(req, res);
+
+    const userExist = await User.findOne({ username: name });
+    if (!userExist) return res.status(404).json({ message: "user not found" });
+
+    return res.status(200).json(userExist);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
