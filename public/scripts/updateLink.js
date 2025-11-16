@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("products").href = `/products/${userName}`;
     document.getElementById("about-us").href = `/about-us/${userName}`;
-    document.getElementById("saved-designs").href = `/designs/list/${userName}`;
+    document.getElementById("saved-designs").href = `/designs/${userName}`;
     
     const login = document.getElementById("login");
     login.textContent = "Profile";

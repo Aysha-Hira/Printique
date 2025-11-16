@@ -35,12 +35,6 @@ const productSchema = new mongoose.Schema(
       required: true,
     },
 
-    // stock_quantity: {
-    //   type: Number,
-    //   required: true,
-    //   min: 0,
-    // },
-
     //   if the product is hidden or not
     isActive: {
       type: Boolean,

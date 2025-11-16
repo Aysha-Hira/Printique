@@ -136,7 +136,7 @@ export const getCustomizationPageByName = async (req, res) => {
     const name = req.params.username;
     if (name == "Guest") getCustomizationPage(req, res);
 
-    const user = await User.find({ username: name });
+    const user = await User.findOne({ username: name });
     if (!user) return res.status(404).json({ mess: "user not found" });
 
     console.log(req.params.type);

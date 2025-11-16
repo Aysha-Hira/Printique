@@ -12,7 +12,7 @@ export const getAboutUsPage = async (req, res) => {
 export const getAboutUsPageByName = async (req, res) => {
   try {
     const name = req.params.username;
-    const user = await User.find({ username: name });
+    const user = await User.findOne({ username: name });
     if (!user) return res.status(404).json({ mess: "user not found" });
 
     return getAboutUsPage(req, res);

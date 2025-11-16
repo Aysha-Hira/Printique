@@ -14,7 +14,7 @@ export const getDesignPage = async (req, res) => {
 export const getDesignPageByName = async (req, res) => {
   try {
     const name = req.params.username;
-    const user = await User.find({ username: name });
+    const user = await User.findOne({ username: name });
     if (!user) return res.status(404).json({ mess: "user not found" });
 
     return getDesignPage(req, res);
@@ -67,10 +67,13 @@ export const listDesigns = async (req, res) => {
 export const listDesignsByName = async (req, res) => {
   try {
     const name = req.params.username;
-    const user = await User.find({ username: name });
+    const user = await User.findOne({ username: name });
     if (!user) return res.status(404).json({ mess: "user not found" });
 
-    const designs = await Design.find({ username: user.username }).sort({ _id: -1 });
+    const designs = await Design.find({ username: name }).sort({
+      _id: -1,
+    });
+
     return res.json(designs);
   } catch (error) {
     res.status(500).json({ message: "internal server error" });

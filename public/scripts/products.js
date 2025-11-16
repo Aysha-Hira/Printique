@@ -44,5 +44,5 @@ fetch("/products/getAllProducts")
   .catch((error) => console.error(error));
 
 function customize(productType) {
-  window.location.href = `${userName}/customization/${productType}`;
+  window.location.href = `/products/${userName}/customization/${productType}`;
 }
