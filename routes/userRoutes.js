@@ -26,7 +26,7 @@ route.get("/getAllUsers", getAllUsers);
 route.put("/update/:id", updateData);
 
 //route for delete user
-route.delete("deleteUser/:id", deleteUser);
+route.delete("/deleteUser/:id", deleteUser);
 
 route.get("/profile", getProfile);
 

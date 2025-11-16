@@ -5,9 +5,9 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import multer from "multer";
+import compression from "compression";
 
-import OpenAI from "openai";
+// import OpenAI from "openai";
 import cors from "cors";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +15,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 
+app.use(compression()); // makes the site faster
 app.use(cors());
 app.use(express.urlencoded({ extended: true })); // for making sure the the values are in json format
 app.use(bodyParser.json());
