@@ -33,8 +33,7 @@ fetch("/products/getAllProducts")
                 
                 <a href="/products/${userName}/customization/${product.name
         .trim()
-        .replace(" ", "")
-        .toLowerCase()}
+        .replace(" ", "")}
                 " class="btn btn-outline-dark mt-2">
                   Start Designing
                 </a>
