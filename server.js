@@ -36,6 +36,7 @@ mongoose
     console.log("database connected successfully");
     app.listen(PORT, () => {
       console.log(`application is running on port ${PORT}`);
+      console.log(`http link: http://localhost:${PORT}/`)
     });
   })
   .catch((error) => console.log(error));

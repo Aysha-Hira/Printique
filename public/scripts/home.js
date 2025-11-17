@@ -1,3 +1,12 @@
+const url = window.location.pathname;
+const pathParts = url.split("/");
+// link.com -> 0
+// product -> 1
+// username -> 2?
+
+var userName = "guest";
+if (pathParts.length > 2) userName = pathParts[pathParts.length - 1];
+
 const featureCardsContainer = document.getElementById(
   "feature-cards-container"
 );
@@ -21,10 +30,12 @@ fetch("/products/getAllProducts")
                   alt="${product.name}"
                 />
                 <h5>${product.name}</h5>
-                <a href="/customization/${product.name
-                  .replace(" ", "")
-                  .toLowerCase()}
-                }" class="btn btn-outline-dark mt-2">
+                
+                <a href="/products/${userName}/customization/${product.name
+        .trim()
+        .replace(" ", "")
+        .toLowerCase()}
+                " class="btn btn-outline-dark mt-2">
                   Start Designing
                 </a>
               </div>
